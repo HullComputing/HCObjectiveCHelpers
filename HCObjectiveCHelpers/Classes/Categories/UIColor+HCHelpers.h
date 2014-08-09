@@ -1,5 +1,5 @@
 //
-//  UIColor+LightAndDark.h
+//  UIColor+HCHelpers.h
 //  Cobrain
 //
 //  Created by Aaron Hull on 11/13/13.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIColor (LightAndDark)
+@interface UIColor (HCHelpers)
 - (UIColor *)lighterColorByPercent:(double)percent;
 
 @end

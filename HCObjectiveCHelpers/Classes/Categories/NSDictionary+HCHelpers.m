@@ -1,14 +1,14 @@
 //
-//  NSDictionary+Additions.m
+//  NSDictionary+HCHelpers.m
 //  Cobrain
 //
 //  Created by Aaron Hull on 2/10/14.
 //  Copyright (c) 2014 Cobrain. All rights reserved.
 //
 
-#import "NSDictionary+Additions.h"
+#import "NSDictionary+HCHelpers.h"
 
-@implementation NSDictionary (Additions)
+@implementation NSDictionary (HCHelpers)
 
 - (NSMutableDictionary *)replaceKey:(NSString *)originalKey withKey:(NSString *)replacementKey
 {

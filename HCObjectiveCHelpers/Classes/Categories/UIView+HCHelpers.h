@@ -1,5 +1,5 @@
 //
-//  UIView+Additions.h
+//  UIView+HCHelpers.h
 //  Cobrain
 //
 //  Created by Aaron Hull on 3/25/14.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIView (Additions)
+@interface UIView (HCHelpers)
 
 - (void)changeFrameSize:(CGSize)size;
 - (void)changeFrameHeight:(CGFloat)height;

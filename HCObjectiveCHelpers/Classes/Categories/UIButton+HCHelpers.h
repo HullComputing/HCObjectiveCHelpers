@@ -1,5 +1,5 @@
 //
-//  UIButton+Additions.h
+//  UIButton+HCHelpers.h
 //  Cobrain
 //
 //  Created by Aaron Hull on 4/9/14.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIButton (Additions)
+@interface UIButton (HCHelpers)
 
 - (void)changeAction:(SEL)action forTarget:(id)aTarget forControlEvent:(UIControlEvents)controlEvent;
 

@@ -7,8 +7,8 @@
 //
 
 #import "NSURLRequestHelper.h"
-#import "NSURL+Additions.h"
-#import "NSString+Additions.h"
+#import "NSURL+HCHelpers.h"
+#import "NSString+HCHelpers.h"
 
 NSString *const kNSURLHTTPHeaderFieldContentType        = @"Content-Type";
 NSString *const kNSURLHTTPHeaderFieldAcceptVersion      = @"Accept-Version";
@@ -27,10 +27,26 @@ NSString *const kNSURLHTTPMethodDelete                  = @"DELETE";
 {
     if  ([self httpMethodIsValid:method] && [baseURLString isValidString]) {
         NSURL *url = [[NSURL alloc] initWithString:baseURLString];
-        
        
         if ([path isValidString]) {
+            NSArray *pathWithQueryArray = [path componentsSeparatedByString:@"?"];
+            if ([pathWithQueryArray isKindOfClass:[NSArray class]] && pathWithQueryArray.count == 2) {
+                NSString *addonQueryString = [pathWithQueryArray lastObject];
+                NSArray *addonQueryArray = [addonQueryString componentsSeparatedByString:@"&"];
+                NSMutableDictionary *updatedQuery = [NSMutableDictionary dictionaryWithDictionary:query];
+                for (NSString *singleAddonQuery in addonQueryArray) {
+                    NSArray *singleQueryArray = [singleAddonQuery componentsSeparatedByString:@"="];
+                    if ([singleQueryArray isKindOfClass:[NSArray class]] && singleQueryArray.count == 2) {
+                        [updatedQuery setObject:[singleQueryArray lastObject] forKey:[singleQueryArray firstObject]];
+                    }
+                }
+                query = [updatedQuery copy];
+                path = [pathWithQueryArray firstObject];
+            }
+            
+            
             url = [url URLByAppendingPathComponent:path];
+            
         }
         
         if ([query isKindOfClass:[NSDictionary class]] && query.count) {
@@ -46,7 +62,7 @@ NSString *const kNSURLHTTPMethodDelete                  = @"DELETE";
         [request setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
         [request setTimeoutInterval:30.0];
         [request setHTTPMethod:method];
-         NSData *postData = nil;
+         NSData *postData = bodyData;
         if ([bodyData isKindOfClass:[NSDictionary class]] && [(NSDictionary *)bodyData count]) {
             if (bodyIsJSON) {
                 postData = [NSJSONSerialization dataWithJSONObject:bodyData options:0 error:nil];
@@ -55,10 +71,13 @@ NSString *const kNSURLHTTPMethodDelete                  = @"DELETE";
             }
         } else if ([bodyData isKindOfClass:[NSString class]]) {
             postData = [(NSString *)bodyData dataUsingEncoding:NSUTF8StringEncoding];
-        }
+        } 
+        
         if (postData) {
             [request setHTTPBody:postData];
-            [request setValue:[NSString stringWithFormat:@"%lu", (unsigned long)[bodyData length]] forHTTPHeaderField:@"Content-Length"];
+            [request setValue:[NSString stringWithFormat:@"%lu", (unsigned long)[postData length]] forHTTPHeaderField:kNSURLHTTPHeaderFieldContentLength];
+        
+            [request setValue:bodyIsJSON ? kNSURLHTTPHeaderKeyJSON : kNSURLHTTPHeaderKeyWWWFormURLEncoded forHTTPHeaderField:kNSURLHTTPHeaderFieldContentType];
         }
         
 //        [request setValue:[NSString stringWithFormat:@"ios, %@, %@", [[UIDevice currentDevice] systemVersion], ([[UIDevice currentDevice] respondsToSelector: @selector(userInterfaceIdiom)] && [UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad ? @"tablet" : @"phone")] forHTTPHeaderField:@"X-Cobrain-Client"];
@@ -68,6 +87,12 @@ NSString *const kNSURLHTTPMethodDelete                  = @"DELETE";
     return nil;
 }
 
++ (NSString *)encodeToPercentEscapeString:(NSString *)string
+{
+    return (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, (__bridge CFStringRef) string, NULL, (__bridge CFStringRef) @":/?#[]@!$&'()*+,;=", kCFStringEncodingUTF8));
+}
+
+
 + (NSURLRequestEnvironment)currentEnvironment
 {
     return NSURLRequestEnvironmentQA;
@@ -75,28 +100,12 @@ NSString *const kNSURLHTTPMethodDelete                  = @"DELETE";
 
 + (NSString *)webAppBaseURL
 {
-    switch ([self currentEnvironment]) {
-        case NSURLRequestEnvironmentQA:
-            return @"http://phoenix.cobrainlabs.com";
-        case NSURLRequestEnvironmentStaging:
-            return @"http://phoenix.cobrainlabs.com";
-        case NSURLRequestEnvironmentProduction:
-        default:
-            return @"http://phoenix.cobrainlabs.com";
-    }
+    return nil;
 }
 
 + (NSString *)apiBaseURL
 {
-    switch ([self currentEnvironment]) {
-        case NSURLRequestEnvironmentQA:
-            return @"http://phoenix.api.cobrainlabs.com";
-        case NSURLRequestEnvironmentStaging:
-            return @"http://phoenix.api.cobrainlabs.com";
-        case NSURLRequestEnvironmentProduction:
-        default:
-            return @"http://phoenix.api.cobrainlabs.com";
-    }
+    return nil;
 }
 
 + (BOOL)httpMethodIsValid:(NSString *)httpMethod

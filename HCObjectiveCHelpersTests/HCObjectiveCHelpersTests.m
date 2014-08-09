@@ -1,6 +1,6 @@
 //
-//  HCOjbectiveCHelpersTests.m
-//  HCOjbectiveCHelpersTests
+//  HCObjectiveCHelpersTests.m
+//  HCObjectiveCHelpersTests
 //
 //  Created by Aaron Hull on 6/16/14.
 //  Copyright (c) 2014 Hull Computing. All rights reserved.
@@ -8,11 +8,11 @@
 
 #import <XCTest/XCTest.h>
 
-@interface HCOjbectiveCHelpersTests : XCTestCase
+@interface HCObjectiveCHelpersTests : XCTestCase
 
 @end
 
-@implementation HCOjbectiveCHelpersTests
+@implementation HCObjectiveCHelpersTests
 
 - (void)setUp {
     [super setUp];

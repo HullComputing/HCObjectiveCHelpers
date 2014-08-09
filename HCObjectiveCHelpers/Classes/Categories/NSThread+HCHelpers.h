@@ -1,5 +1,5 @@
 //
-//  NSThread+Additions.h
+//  NSThread+HCHelpers.h
 //  cobrain-ios-phoenix
 //
 //  Created by Aaron Hull on 6/12/14.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSThread (Additions)
+@interface NSThread (HCHelpers)
 - (void)performBlock:(void (^)())block;
 - (void)performBlock:(void (^)())block waitUntilDone:(BOOL)wait;
 + (void)performBlockInBackground:(void (^)())block;

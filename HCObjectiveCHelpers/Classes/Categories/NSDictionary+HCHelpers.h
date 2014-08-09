@@ -1,5 +1,5 @@
 //
-//  NSDictionary+Additions.h
+//  NSDictionary+HCHelpers.h
 //  Cobrain
 //
 //  Created by Aaron Hull on 2/10/14.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSDictionary (Additions)
+@interface NSDictionary (HCHelpers)
 
 - (NSMutableDictionary *)replaceKey:(NSString *)originalKey withKey:(NSString *)replacementKey;
 

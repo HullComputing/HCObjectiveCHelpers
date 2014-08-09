@@ -1,15 +1,15 @@
 //
-//  NSObject+Additions.m
+//  NSObject+HCHelpers.m
 //  Cobrain
 //
 //  Created by Aaron Hull on 2/11/14.
 //  Copyright (c) 2014 Cobrain. All rights reserved.
 //
 
-#import "NSObject+Additions.h"
+#import "NSObject+HCHelpers.h"
 #import <objc/runtime.h>
 
-@implementation NSObject (Additions)
+@implementation NSObject (HCHelpers)
 @dynamic observers;
 
 - (NSArray *)getPropertyNames
@@ -115,6 +115,11 @@
         [self addObserver:observer forKeyPath:keyPath options:options context:nil];
     }
     [self.observers setObject:observersArray forKey:keyPath];
+}
+
+- (BOOL)isValidString
+{
+    return ([self isKindOfClass:[NSString class]] && ![[(NSString *)self stringByReplacingOccurrencesOfString:@" " withString:@""] isEqualToString:@""]);
 }
 
 

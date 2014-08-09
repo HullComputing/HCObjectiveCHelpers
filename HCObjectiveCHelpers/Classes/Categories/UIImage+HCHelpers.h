@@ -1,5 +1,5 @@
 //
-//  UIImage+Additions.h
+//  UIImage+HCHelpers.h
 //  Cobrain
 //
 //  Created by Aaron Hull on 4/1/14.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIImage (Additions)
+@interface UIImage (HCHelpers)
 + (UIImage *)imageWithoutCacheNamed:(NSString *)filename;
 + (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize;
 

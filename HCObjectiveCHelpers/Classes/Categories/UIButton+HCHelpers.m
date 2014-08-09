@@ -1,14 +1,14 @@
 //
-//  UIButton+Additions.m
+//  UIButton+HCHelpers.m
 //  Cobrain
 //
 //  Created by Aaron Hull on 4/9/14.
 //  Copyright (c) 2014 Cobrain. All rights reserved.
 //
 
-#import "UIButton+Additions.h"
+#import "UIButton+HCHelpers.h"
 
-@implementation UIButton (Additions)
+@implementation UIButton (HCHelpers)
 
 - (void)changeAction:(SEL)action forTarget:(id)aTarget forControlEvent:(UIControlEvents)controlEvent
 {

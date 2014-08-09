@@ -1,14 +1,14 @@
 //
-//  UIColor+LightAndDark.m
+//  UIColor+HCHelpers.m
 //  Cobrain
 //
 //  Created by Aaron Hull on 11/13/13.
 //  Copyright (c) 2013 Cobrain. All rights reserved.
 //
 
-#import "UIColor+LightAndDark.h"
+#import "UIColor+HCHelpers.h"
 
-@implementation UIColor (LightAndDark)
+@implementation UIColor (HCHelpers)
 
 - (UIColor *)lighterColorByPercent:(double)percent
 {

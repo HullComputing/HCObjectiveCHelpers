@@ -1,14 +1,14 @@
 //
-//  UILabel+Additions.m
+//  UILabel+HCHelpers.m
 //  Cobrain
 //
 //  Created by Aaron Hull on 4/14/14.
 //  Copyright (c) 2014 Cobrain. All rights reserved.
 //
 
-#import "UILabel+Additions.h"
+#import "UILabel+HCHelpers.h"
 
-@implementation UILabel (Additions)
+@implementation UILabel (HCHelpers)
 
 - (CGFloat)fontSizeForContent
 {

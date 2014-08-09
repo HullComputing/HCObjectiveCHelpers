@@ -1,14 +1,14 @@
 //
-//  UIView+Additions.m
+//  UIView+HCHelpers.m
 //  Cobrain
 //
 //  Created by Aaron Hull on 3/25/14.
 //  Copyright (c) 2014 Cobrain. All rights reserved.
 //
 
-#import "UIView+Additions.h"
+#import "UIView+HCHelpers.h"
 
-@implementation UIView (Additions)
+@implementation UIView (HCHelpers)
 
 - (void)changeFrameSize:(CGSize)size
 {

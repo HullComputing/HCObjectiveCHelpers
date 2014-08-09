@@ -1,15 +1,15 @@
 //
-//  NSThread+Additions.m
+//  NSThread+HCHelpers.m
 //  cobrain-ios-phoenix
 //
 //  Created by Aaron Hull on 6/12/14.
 //  Copyright (c) 2014 Cobrain. All rights reserved.
 //
 
-#import "NSThread+Additions.h"
+#import "NSThread+HCHelpers.h"
 
 
-@implementation NSThread (Additions)
+@implementation NSThread (HCHelpers)
 - (void)performBlock:(void (^)())block
 {
     if ([[NSThread currentThread] isEqual:self])

@@ -1,14 +1,14 @@
 //
-//  NSString+Additions.m
+//  NSString+HCHelpers.m
 //  Cobrain iOS Phoenix
 //
 //  Created by Aaron Hull on 6/6/14.
 //  Copyright (c) 2014 Cobrain. All rights reserved.
 //
 
-#import "NSString+Additions.h"
+#import "NSString+HCHelpers.h"
 
-@implementation NSString (Additions)
+@implementation NSString (HCHelpers)
 
 - (CGFloat)pointSizeForFont:(UIFont *)font inWidth:(CGFloat)width
 {
@@ -22,9 +22,13 @@
     return pointSize;
 }
 
-- (BOOL)isValidString
+- (NSString *)stringByStrippingHTMLTags
 {
-    return ([self isKindOfClass:[NSString class]] && ![[self stringByReplacingOccurrencesOfString:@" " withString:@""] isEqualToString:@""]);
+    NSRange range;
+    NSString *finalString = [self copy];
+    while ((range = [finalString rangeOfString:@"<[^>]+>" options:NSRegularExpressionSearch]).location != NSNotFound)
+        finalString = [finalString stringByReplacingCharactersInRange:range withString:@""];
+    return finalString;
 }
 
 @end

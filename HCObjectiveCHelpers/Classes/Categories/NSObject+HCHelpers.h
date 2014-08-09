@@ -1,5 +1,5 @@
 //
-//  NSObject+Additions.h
+//  NSObject+HCHelpers.h
 //  Cobrain
 //
 //  Created by Aaron Hull on 2/11/14.
@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface NSObject (Additions)
+@interface NSObject (HCHelpers)
 
 @property (nonatomic, strong) NSMutableDictionary *observers;
 
@@ -18,4 +18,5 @@
 - (NSDictionary *)removeUnknownPropertiesFromDictionary:(NSDictionary *)keyedValues;
 - (NSDictionary *)dictionaryOfProperties;
 - (void)addObserver:(NSObject *)observer forKeyPath:(NSString *)keyPath options:(NSKeyValueObservingOptions)options;
+- (BOOL)isValidString;
 @end

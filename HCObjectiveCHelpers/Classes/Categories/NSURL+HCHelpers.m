@@ -1,14 +1,14 @@
 //
-//  NSURL+Additions.m
+//  NSURL+HCHelpers.m
 //  Cobrain
 //
 //  Created by Aaron Hull on 2/12/14.
 //  Copyright (c) 2014 Cobrain. All rights reserved.
 //
 
-#import "NSURL+Additions.h"
+#import "NSURL+HCHelpers.h"
 
-@implementation NSURL (Additions)
+@implementation NSURL (HCHelpers)
 
 - (NSURL *)URLByAppendingQueryDictionary:(NSDictionary *)query
 {

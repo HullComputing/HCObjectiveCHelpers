@@ -1,14 +1,14 @@
 //
-//  UIViewController+Additions.m
+//  UIViewController+HCHelpers.m
 //  Cobrain
 //
 //  Created by Aaron Hull on 4/3/14.
 //  Copyright (c) 2014 Cobrain. All rights reserved.
 //
 
-#import "UIViewController+Additions.h"
+#import "UIViewController+HCHelpers.h"
 
-@implementation UIViewController (Additions)
+@implementation UIViewController (HCHelpers)
 
 - (void)removeAllChildViewControllers
 {

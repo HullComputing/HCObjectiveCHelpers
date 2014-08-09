@@ -1,14 +1,14 @@
 //
-//  UIImage+Additions.m
+//  UIImage+HCHelpers.m
 //  Cobrain
 //
 //  Created by Aaron Hull on 4/1/14.
 //  Copyright (c) 2014 Cobrain. All rights reserved.
 //
 
-#import "UIImage+Additions.h"
+#import "UIImage+HCHelpers.h"
 
-@implementation UIImage (Additions)
+@implementation UIImage (HCHelpers)
 
 + (UIImage *)imageWithoutCacheNamed:(NSString *)filename
 {

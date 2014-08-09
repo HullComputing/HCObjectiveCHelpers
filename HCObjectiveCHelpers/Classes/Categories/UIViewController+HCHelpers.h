@@ -1,5 +1,5 @@
 //
-//  UIViewController+Additions.h
+//  UIViewController+HCHelpers.h
 //  Cobrain
 //
 //  Created by Aaron Hull on 4/3/14.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIViewController (Additions)
+@interface UIViewController (HCHelpers)
 
 - (void)removeAllChildViewControllers;
 
